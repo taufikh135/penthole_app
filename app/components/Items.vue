@@ -1,19 +1,15 @@
 <template>
-    <Page>
-        <ActionBar>
-            <Label text="Home"></Label>
-        </ActionBar>
-
-        <ListView for="item in items" @itemTap="onItemTap">
-            <v-template>
-                <StackLayout orientation="horizontal">
-                    <Label :text="item.name" textWrap="true"></Label>
-                </StackLayout>
-            </v-template>
-        </ListView>
-    </Page>
+  <Page class="page">
+    <ActionBar title="Pothole Detector" />
+    <StackLayout>
+      <Label text="Pothole Detection" class="title" />
+      <Image ref="inputImage" src="~/assets/sample.jpg" width="300" height="300" />
+      <Button text="Detect Potholes" @tap="detectPotholes" class="button" />
+      <Image :src="outputImage" v-if="outputImage" width="300" height="300" />
+      <Label :text="resultMessage" v-if="resultMessage" class="result" />
+    </StackLayout>
+  </Page>
 </template>
-
 <script>
   import ItemDetails from "./ItemDetails";
 
